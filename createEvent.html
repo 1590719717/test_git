@@ -1,0 +1,31 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>测试createEvent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <div id="test" style="width: 100px;height: 100px;background-color: #ccc;">
+
+    </div>
+    <script>
+        // 绑定自定义事件
+        var test = document.getElementById('test');
+        // document.addEventListener('cus',function(event){
+        //     console.log(event);
+        // },false);
+
+        // 定义自定义事件
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('cus',true,true);
+        event.message = 'message';
+
+        //触发自定义事件
+        document.dispatchEvent(event);
+
+    </script>
+</body>
+</html>
