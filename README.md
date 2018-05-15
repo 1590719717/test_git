@@ -26,6 +26,5 @@ Thank `You` . Please `Call` Me `Coder`
 ```javascript
 document.getElementById('id');
 
-master线下修改的东西
-
-master线上别人修改的东西
+dev1分支修改了一些东西
+dev2分支也修改了一些东西
