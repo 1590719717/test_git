@@ -8,25 +8,9 @@
     
 </head>
 <body>
-    <div id="test" style="width: 100px;height: 100px;background-color: #ccc;">
-        master分支其他文件修改
-        master分支又修改了东西
-    </div>
+    
     <script>
-        // 绑定自定义事件
-        var test = document.getElementById('test');
-        // document.addEventListener('cus',function(event){
-        //     console.log(event);
-        // },false);
-
-        // 定义自定义事件
-        var event = document.createEvent('HTMLEvents');
-        event.initEvent('cus',true,true);
-        event.message = 'message';
-
-        //触发自定义事件
-        document.dispatchEvent(event);
-
+        
         var pathList = {
             "coin_coin" : 1,
             "btc_trade" : 1,
@@ -37,6 +21,8 @@
         function getPageSymbol(){
             var symbol_path = location.pathname.match(new RegExp("([^_\/]+_[^\/]+)\/([^\/]+)"));
             var symbol_hash = location.hash.replace("#","");
+            console.log(symbol_path);
+            console.log('hash:',symbol_hash);
             var arg = symbol_hash.split("&");
             if (!window["getHashParameters"]) {
                 window["getHashParameters"] = {};
