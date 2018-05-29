@@ -1,16 +1,17 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>测试createEvent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
 </head>
+
 <body>
     <div id="test" style="width: 100px;height: 100px;background-color: #ccc;">
-        master分支其他文件修改
-        master分支又修改了东西
+        master分支其他文件修改 master分支又修改了东西
     </div>
     <script>
         // 绑定自定义事件
@@ -21,28 +22,28 @@
 
         // 定义自定义事件
         var event = document.createEvent('HTMLEvents');
-        event.initEvent('cus',true,true);
+        event.initEvent('cus', true, true);
         event.message = 'message';
 
         //触发自定义事件
         document.dispatchEvent(event);
 
         var pathList = {
-            "coin_coin" : 1,
-            "btc_trade" : 1,
-            "usdt_trade" : 1,
-            "eth_trade" : 1,
+            "coin_coin": 1,
+            "btc_trade": 1,
+            "usdt_trade": 1,
+            "eth_trade": 1,
         }
 
-        function getPageSymbol(){
+        function getPageSymbol() {
             var symbol_path = location.pathname.match(new RegExp("([^_\/]+_[^\/]+)\/([^\/]+)"));
-            var symbol_hash = location.hash.replace("#","");
+            var symbol_hash = location.hash.replace("#", "");
             var arg = symbol_hash.split("&");
             if (!window["getHashParameters"]) {
                 window["getHashParameters"] = {};
             }
-            if(symbol_hash){
-                for(var tmp, i = 0, l = arg.length; i < l;i++) {
+            if (symbol_hash) {
+                for (var tmp, i = 0, l = arg.length; i < l; i++) {
                     tmp = arg[i].split('=');
                     window.getHashParameters[tmp[0]] = decodeURIComponent(tmp[1])
                 }
@@ -50,10 +51,10 @@
                     return window.getHashParameters['s'].split("_").concat([symbol_path[2]]);
                 }
             }
-            if(symbol_path){
-                if(pathList[symbol_path[1]]){
-                    return [null,null].concat([symbol_path[2]])
-                }else{
+            if (symbol_path) {
+                if (pathList[symbol_path[1]]) {
+                    return [null, null].concat([symbol_path[2]])
+                } else {
                     return symbol_path[1].split("_").concat([symbol_path[2]]);
                 }
             }
@@ -62,4 +63,5 @@
         console.log(getPageSymbol());
     </script>
 </body>
+
 </html>
