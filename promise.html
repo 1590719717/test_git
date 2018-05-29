@@ -1,0 +1,50 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>测试promise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+    <script>
+        // promise基本用法
+        // const p = new Promise((resolve, reject) => {
+        //     throw new Error('test');
+        // }).then((post) => {
+        //     console.log('成功');
+        // }).catch((err) => {
+        //     console.log(err)
+        // }).finally(()=>{
+        //     console.log('finally');
+        // });
+
+        // promise.all用法，若p1被catch了，则all不会被catch
+        const p1 = new Promise((resolve, reject) => {
+            // throw new Error('错误');
+            resolve('p1 success');
+        }).then((data) => {
+            console.log('成功');
+        }).catch((err) => {
+            console.log(err);
+        });
+
+        const p2 = new Promise((resolve, reject) => {
+            resolve('test success');
+        }).then((result) => {
+            console.log(result);
+        });
+
+        Promise.all([p1, p2]).then((result) => {
+            console.log(result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>
