@@ -1,0 +1,70 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>测试createEvent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="test" style="width: 100px;height: 100px;background-color: #ccc;"></div>
+    <div style="width: 100px;height: 200px;background-color: #f00;"></div>
+    <script>
+        // es6 array的扩展
+        //1、将一个数组转为用逗号分隔的参数序列
+        //es5写法
+        let arr = [12, 3, 5, 7];
+        console.log(Math.max.apply(null, arr));
+        //es6写法
+        console.log(Math.max(...arr));
+        //es5以数组作为参数写法
+        function f(a, b, c, d) {
+            console.log(a + b + c + d);
+        }
+        f.apply(null, arr);
+        //es6
+        f(...arr);
+        //es5数组合并
+        let arr2 = [8, 8, 8];
+        Array.prototype.push.apply(arr, arr2);
+        console.log(arr);
+        arr.push(...arr2);
+        console.log(arr);
+
+        //2、任何 Iterator 接口的对象，都可以用扩展运算符转为真正的数组
+        let nodeList = document.querySelectorAll('div');
+        console.log(nodeList); //nodeList
+        let array = [...nodeList];
+        console.log(array);
+        console.log(Object.prototype.toString.call(array));
+
+        //3、Array.from应用   Array.from方法用于将两类对象转为真正的数组
+        let arrayLike = {
+            1: 'a',
+            2: 'b',
+            lenght: 2
+        }
+        // es5
+        console.log([].slice.call(arrayLike));
+        console.log(Array.from(arrayLike));
+
+        Array.from([1, 2, 3], (x) => {
+            console.log(x);
+        });
+
+        // 4、Array.of方法用于将一组值，转换为数组。Array.of基本上可以用来替代Array()或new Array()
+        console.log(Array.of(1, 2)); // [1, 2]
+
+        // 5、数组实例的copyWithin方法，在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），
+        // 然后返回当前数组。也就是说，使用这个方法，会修改当前数组。
+        // 将3号位复制到0号位
+        [1, 2, 3, 4, 5].copyWithin(0, 3, 4)
+        // [4, 2, 3, 4, 5]
+
+        
+    </script>
+</body>
+
+</html>
